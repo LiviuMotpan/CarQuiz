@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
+$red: #e5383b;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato",sans-serif;
+    transition-duration: .25s;
+}
+
+@mixin flex($jC,$aI,$fD) {
+    display: flex;
+    align-items: $aI;
+    justify-content: $jC;
+    flex-direction: $fD;
+}
+
+body {
+    height: 100vh;
+    @include flex(center,center,column);
+}
+
+#start {
+    @include flex(center,center,column);
+    gap: 25px;
+}
+
+button {
+    padding: 10px;
+    font-size: 24px;
+    min-width: 250px;
+    border-radius: 10px;
+    color: #fff;
+    background-color: $red;
+    cursor: pointer;
+    border: 2px solid $red;
+    &:hover {
+        background: none;
+        color: $red;
+    }
+}
+
+#quiz {
+    @include flex(center,center,column);
+    gap: 20px;
+    #quiz-content {
+        img {
+            height: 400px;
+            width: 700px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        h1 {
+            text-align: center;
+        }
+    }
+}
+#timer {
+    p {
+        font-size: 24px;
+        font-weight: 700;
+        margin: 10px 0;
+    }
+}
+
+#timer-ran-out,#wrong,#correct {
+    width: 100vw;
+    height: 100vh;
+    @include flex(center,center,row);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(10px);
+    font-size: 48px;
+    color: #fff;
+}
+
+#quiz,
+#wrong,
+#correct,
+#timer-ran-out,
+#timer {
+    display: none;
+}
+
+#progress-bar {
+    width: 250px;
+    height: 25px;
+    background-color: #f5f3f4;
+    border-radius: 12.5px;
+    display: none;
+    justify-content: left;
+    align-items: center;
+    padding:2.5px 5px;
+    margin: 10px 0;
+
+    div {
+        min-width: 10%;
+        height: 20px;
+        border-radius: 10px;
+        background-color: $red;
+    }
+}
+
+#score {
+    @include flex(center,center,column);
+    gap: 10px;
+}
